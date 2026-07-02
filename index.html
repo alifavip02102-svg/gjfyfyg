@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALIFA VIP | QUANTUM PRO</title>
+    <title>Bot IM | QUANTUM PRO</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Roboto+Mono:wght@400;700&display=swap');
 
         :root {
             --bg-dark: #03060f;
-            --panel-bg: rgba(10, 16, 32, 0.7);
+            --panel-bg: rgba(10, 16, 32, 0.75);
             --neon-blue: #00e5ff;
             --neon-green: #00ffaa;
             --neon-pink: #ff2a6d;
@@ -61,7 +61,7 @@
             background: var(--neon-blue);
         }
 
-        /* ЭКРАН АВТОРИЗАЦИИ / РЕГИСТРАЦИИ */
+        /* ЭКРАН АВТОРИЗАЦИИ */
         .auth-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -78,7 +78,7 @@
             backdrop-filter: var(--glass-blur);
             border: 1px solid rgba(0, 229, 255, 0.2);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 24px;
             width: 100%;
             max-width: 420px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 229, 255, 0.1);
@@ -112,7 +112,7 @@
             margin-bottom: 25px;
             background: rgba(0,0,0,0.3);
             padding: 4px;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -159,7 +159,7 @@
         .auth-input-wrapper {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 2px;
             display: flex;
             transition: all 0.3s;
@@ -188,26 +188,20 @@
             font-family: 'Orbitron', sans-serif;
             font-size: 14px;
             font-weight: 900;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             margin-top: 10px;
             box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2);
             transition: all 0.2s;
         }
 
-        .auth-submit-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 7px 20px rgba(0, 229, 255, 0.4);
-        }
-
-        /* ИНТЕРФЕЙС ПЛАТФОРМЫ (Изначально скрыт) */
+        /* ИНТЕРФЕЙС ПЛАТФОРМЫ */
         .app-container {
             display: none;
             flex-direction: column;
             height: 100vh;
         }
 
-        /* Шапка с 3D эффектом */
         header {
             background: rgba(6, 11, 25, 0.85);
             backdrop-filter: var(--glass-blur);
@@ -244,7 +238,7 @@
             color: white;
             font-size: 11px;
             padding: 2px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 800;
             box-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
             letter-spacing: 1px;
@@ -265,7 +259,6 @@
             align-items: center;
             gap: 12px;
             box-shadow: inset 0 0 15px rgba(0, 255, 170, 0.1), 0 0 15px rgba(0, 255, 170, 0.15);
-            transition: all 0.3s;
         }
 
         .balance-label {
@@ -300,7 +293,7 @@
             animation: blink 1.5s infinite;
         }
 
-        /* Главный Контейнер */
+        /* Главная Рабочая Область */
         .main-workspace {
             display: flex;
             flex: 1;
@@ -310,12 +303,12 @@
             box-sizing: border-box;
         }
 
-        /* 3D Свойства Панелей */
+        /* Закругленные 3D панели */
         .glass-panel {
             background: var(--panel-bg);
             backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
             box-shadow: 
                 0 15px 35px rgba(0, 0, 0, 0.5),
                 inset 0 0 30px rgba(255, 255, 255, 0.02);
@@ -324,22 +317,7 @@
             position: relative;
         }
 
-        .glass-panel::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -50%;
-            width: 200%; height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.01), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-            pointer-events: none;
-        }
-
-        .glass-panel:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* Левая часть: Список Валютных Пар */
+        /* Список активов */
         .assets-sidebar {
             flex: 1.1;
             min-width: 320px;
@@ -388,12 +366,6 @@
             transition: all 0.2s;
         }
 
-        .tab-btn:hover {
-            color: #fff;
-            background: rgba(0, 229, 255, 0.1);
-            border-color: rgba(0, 229, 255, 0.2);
-        }
-
         .tab-btn.active {
             color: var(--bg-dark);
             background: var(--neon-blue);
@@ -415,7 +387,7 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.04);
             padding: 12px 16px;
-            border-radius: 10px;
+            border-radius: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -423,58 +395,12 @@
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .asset-item:hover {
-            background: rgba(0, 229, 255, 0.05);
-            border-color: rgba(0, 229, 255, 0.2);
-            transform: translateX(4px) translateZ(10px);
-            box-shadow: -5px 5px 15px rgba(0,0,0,0.3);
-        }
-
         .asset-item.active {
             background: linear-gradient(90deg, rgba(0, 229, 255, 0.15), transparent);
             border-left: 4px solid var(--neon-blue);
-            border-top-color: rgba(0, 229, 255, 0.2);
-            border-right-color: rgba(0, 229, 255, 0.05);
-            border-bottom-color: rgba(0, 229, 255, 0.2);
         }
 
-        .asset-name-box {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .asset-title {
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        .asset-cat {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .asset-price-box {
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .asset-price-val {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .asset-change {
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        /* Центральная часть: График и Сделки */
+        /* Центр: График и RSI */
         .center-workspace {
             flex: 3;
             display: flex;
@@ -490,13 +416,39 @@
             transform-style: preserve-3d;
         }
 
+        /* Панель управления Pocket Option */
         .chart-control-bar {
-            padding: 16px 24px;
-            background: rgba(0,0,0,0.2);
+            padding: 12px 24px;
+            background: rgba(0,0,0,0.3);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .po-controls-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .po-select-btn {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .po-select-btn:hover, .po-select-btn.active {
+            background: rgba(0, 229, 255, 0.15);
+            border-color: var(--neon-blue);
         }
 
         .current-asset-info {
@@ -514,35 +466,42 @@
 
         .live-holo-price {
             font-family: 'Roboto Mono', monospace;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             padding: 2px 10px;
             border-radius: 6px;
-            transition: all 0.1s;
         }
 
-        .price-glow-up {
-            color: var(--neon-green);
-            text-shadow: 0 0 15px rgba(0, 255, 170, 0.6);
-        }
-
-        .price-glow-down {
-            color: var(--neon-pink);
-            text-shadow: 0 0 15px rgba(255, 42, 109, 0.6);
-        }
+        .price-glow-up { color: var(--neon-green); text-shadow: 0 0 15px rgba(0, 255, 170, 0.6); }
+        .price-glow-down { color: var(--neon-pink); text-shadow: 0 0 15px rgba(255, 42, 109, 0.6); }
 
         .chart-wrapper {
             flex: 1;
-            padding: 20px;
+            padding: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .main-chart-container {
+            flex: 2;
             position: relative;
         }
 
-        /* Нижний блок сделок */
+        .rsi-chart-container {
+            flex: 0.8;
+            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 5px;
+        }
+
+        /* Реестр сделок */
         .ledger-panel {
             flex: 0.9;
             display: flex;
             flex-direction: column;
-            min-height: 180px;
+            min-height: 160px;
         }
 
         .ledger-header {
@@ -569,11 +528,6 @@
         .ledger-table th {
             padding: 10px 20px;
             color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 1px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
             background: rgba(0, 0, 0, 0.1);
         }
 
@@ -583,36 +537,20 @@
             font-weight: 600;
         }
 
-        .ledger-table tr:hover {
-            background: rgba(255,255,255,0.01);
-        }
+        .dir-badge { padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+        .dir-up { background: rgba(0, 255, 170, 0.15); color: var(--neon-green); }
+        .dir-down { background: rgba(255, 42, 109, 0.15); color: var(--neon-pink); }
+        .status-win { color: var(--neon-green); font-weight: 700; }
+        .status-loss { color: var(--neon-pink); font-weight: 700; }
+        .status-process { color: var(--neon-blue); }
 
-        .dir-badge {
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-        .dir-up {
-            background: rgba(0, 255, 170, 0.15);
-            color: var(--neon-green);
-        }
-        .dir-down {
-            background: rgba(255, 42, 109, 0.15);
-            color: var(--neon-pink);
-        }
-
-        .status-win { color: var(--neon-green); font-weight: 700;}
-        .status-loss { color: var(--neon-pink); font-weight: 700;}
-        .status-process { color: var(--neon-blue); animation: pulseText 1s infinite alternate;}
-
-        /* Правая часть: Сделочный Терминал */
+        /* Правая Панель Торговли */
         .trading-terminal {
             flex: 1;
             min-width: 300px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
             transform: rotateY(-4deg) translateZ(5px);
             transform-style: preserve-3d;
             padding: 24px;
@@ -621,7 +559,7 @@
         .terminal-section {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .terminal-label {
@@ -635,20 +573,12 @@
         }
 
         .input-3d-wrapper {
-            position: relative;
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(0, 229, 255, 0.2);
-            border-radius: 10px;
+            border-radius: 14px;
             padding: 4px;
             display: flex;
             align-items: center;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
-            transition: all 0.3s;
-        }
-
-        .input-3d-wrapper:focus-within {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.25), inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .input-3d-wrapper input {
@@ -675,184 +605,87 @@
             border: 1px solid rgba(255, 255, 255, 0.06);
             color: var(--text-main);
             padding: 8px 4px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .quick-btn:hover {
-            background: rgba(0, 229, 255, 0.1);
-            border-color: var(--neon-blue);
-        }
-
-        /* Индикатор AI Прогноза */
+        /* Нейроанализатор */
         .ai-recommendation-box {
             background: linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(176, 0, 255, 0.05));
             border: 1px solid rgba(0, 229, 255, 0.15);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 14px;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin-top: 10px;
         }
 
-        .ai-header-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .ai-meter-bg {
-            height: 6px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 3px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ai-meter-fill {
-            height: 100%;
-            width: 74%;
-            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
-            box-shadow: 0 0 10px var(--neon-blue);
-            transition: width 0.5s ease;
-        }
+        .ai-meter-bg { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+        .ai-meter-fill { height: 100%; width: 75%; background: linear-gradient(90deg, var(--neon-blue), var(--neon-green)); }
 
         /* Кнопки Торговли */
         .action-buttons-box {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             margin-top: auto;
         }
 
         .trade-btn {
             padding: 18px;
             border: none;
-            border-radius: 12px;
+            border-radius: 16px;
             font-family: 'Orbitron', sans-serif;
             font-size: 16px;
             font-weight: 900;
             color: #fff;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            letter-spacing: 1px;
+            transition: all 0.2s;
         }
 
-        .btn-call {
-            background: linear-gradient(135deg, #02c39a, #00a896);
-            box-shadow: 0 6px 0 #00796b, 0 10px 20px rgba(2, 195, 154, 0.3);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
+        .btn-call { background: linear-gradient(135deg, #02c39a, #00a896); box-shadow: 0 6px 0 #00796b; }
+        .btn-call:active { transform: translateY(4px); box-shadow: 0 2px 0 #00796b; }
+        .btn-put { background: linear-gradient(135deg, #ff2a6d, #d90429); box-shadow: 0 6px 0 #a30022; }
+        .btn-put:active { transform: translateY(4px); box-shadow: 0 2px 0 #a30022; }
 
-        .btn-call:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 0 #00796b, 0 12px 25px rgba(2, 195, 154, 0.4);
-        }
-
-        .btn-call:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #00796b, 0 4px 10px rgba(2, 195, 154, 0.2);
-        }
-
-        .btn-put {
-            background: linear-gradient(135deg, #ff2a6d, #d90429);
-            box-shadow: 0 6px 0 #a30022, 0 10px 20px rgba(255, 42, 109, 0.3);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .btn-put:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 0 #a30022, 0 12px 25px rgba(255, 42, 109, 0.4);
-        }
-
-        .btn-put:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #a30022, 0 4px 10px rgba(255, 42, 109, 0.2);
-        }
-
-        /* Уведомления */
-        .toast-container {
+        /* Эффект падающих денег */
+        .money-drop {
             position: fixed;
-            top: 24px;
-            right: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10000;
+            color: #ffdf00;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 99999;
+            animation: fall linear forwards;
         }
 
-        .toast-3d {
-            background: rgba(10, 20, 40, 0.9);
-            backdrop-filter: blur(10px);
-            border-left: 4px solid var(--neon-blue);
-            padding: 16px 24px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(0, 229, 255, 0.1);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            transform: translateZ(20px);
-            animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
 
-        .toast-success { border-left-color: var(--neon-green); box-shadow: 0 0 15px rgba(0,255,170,0.15), 0 10px 30px rgba(0,0,0,0.5); }
-        .toast-error { border-left-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255,42,109,0.15), 0 10px 30px rgba(0,0,0,0.5); }
+        .toast-container { position: fixed; top: 24px; right: 24px; display: flex; flex-direction: column; gap: 10px; z-index: 10000; }
+        .toast-3d { background: rgba(10, 20, 40, 0.9); padding: 16px 24px; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 600; }
+        .toast-success { border-left: 4px solid var(--neon-green); }
+        .toast-error { border-left: 4px solid var(--neon-pink); }
 
-        /* Анимации */
-        @keyframes textPulse {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(0,229,255,0.4)); }
-            50% { filter: drop-shadow(0 0 22px rgba(255,42,109,0.6)); }
-        }
-
+        @keyframes textPulse { 0%, 100% { filter: drop-shadow(0 0 10px rgba(0,229,255,0.4)); } 50% { filter: drop-shadow(0 0 22px rgba(255,42,109,0.6)); } }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        @keyframes pulseText { from { opacity: 0.6; } to { opacity: 1; } }
-        @keyframes slideIn {
-            from { transform: translateX(120%) scale(0.9); opacity: 0; }
-            to { transform: translateX(0) scale(1); opacity: 1; }
-        }
-
-        @media(max-width: 950px) {
-            body { overflow-y: auto; height: auto; }
-            .main-workspace { flex-direction: column; height: auto; }
-            .assets-sidebar, .trading-terminal { transform: none; min-width: 100%; }
-            .chart-panel { transform: none; height: 400px; }
-        }
     </style>
 </head>
 <body>
 
 <div class="auth-overlay" id="authOverlay">
     <div class="auth-card">
-        <div class="auth-logo">ALIFA VIP</div>
+        <div class="auth-logo">BOT IM</div>
         <div class="auth-subtitle">QUANTUM TRADING PLATFORM</div>
-        
         <div class="auth-tabs">
             <button class="auth-tab-btn active" id="tabLogin" onclick="switchAuthMode('login')">Вход</button>
             <button class="auth-tab-btn" id="tabRegister" onclick="switchAuthMode('register')">Регистрация</button>
         </div>
-
         <form class="auth-form" id="authForm" onsubmit="handleAuthSubmit(event)">
-            <div class="input-group">
-                <label for="authEmail">E-mail / Логин</label>
-                <div class="auth-input-wrapper">
-                    <input type="text" id="authEmail" placeholder="example@domain.com" required>
-                </div>
-            </div>
-            
-            <div class="input-group">
-                <label for="authPassword">Пароль</label>
-                <div class="auth-input-wrapper">
-                    <input type="password" id="authPassword" placeholder="••••••••" required>
-                </div>
-            </div>
-
+            <div class="input-group"><label>Логин</label><div class="auth-input-wrapper"><input type="text" required value="QuantumTrader"></div></div>
+            <div class="input-group"><label>Пароль</label><div class="auth-input-wrapper"><input type="password" required value="••••••••"></div></div>
             <button type="submit" class="auth-submit-btn" id="authSubmitBtn">ПОДКЛЮЧИТЬСЯ К СЕРВЕРУ</button>
         </form>
     </div>
@@ -861,18 +694,15 @@
 <div class="app-container" id="appContainer">
     <header>
         <div class="logo-box">
-            <div class="logo-3d">ALIFA VIP</div>
-            <div class="badge-pro">КОМАНДА / QUANTUM AI</div>
+            <div class="logo-3d">BOT IM</div>
+            <div class="badge-pro">QUANTUM AI MATRIX</div>
         </div>
         <div class="header-controls">
             <div class="balance-container">
                 <span class="balance-label">ДЕМО-БАЛАНС</span>
                 <span class="balance-value" id="userBalance">$10,000.00</span>
             </div>
-            <div class="server-status">
-                <div class="status-dot"></div>
-                <span>КВАНТОВЫЙ СЕРВЕР: ОНЛАЙН</span>
-            </div>
+            <div class="server-status"><div class="status-dot"></div><span>КВАНТОВЫЙ СЕРВЕР: ОНЛАЙН</span></div>
         </div>
     </header>
 
@@ -885,8 +715,6 @@
                     <button class="tab-btn" onclick="switchCategory('Валюты')">Валюты</button>
                     <button class="tab-btn" onclick="switchCategory('Криптовалюты')">Крипто</button>
                     <button class="tab-btn" onclick="switchCategory('Сырьевые товары')">Товары</button>
-                    <button class="tab-btn" onclick="switchCategory('Акции')">Акции</button>
-                    <button class="tab-btn" onclick="switchCategory('Индекны')">Индексы</button>
                 </div>
             </div>
             <div class="assets-list" id="assetsContainer"></div>
@@ -899,16 +727,31 @@
                         <div class="current-asset-title" id="activeAssetTitle">EUR/USD</div>
                         <div class="live-holo-price price-glow-up" id="activeAssetPrice">1.08520</div>
                     </div>
-                    <div style="font-size: 13px; color: var(--text-muted); font-weight: 600;">📈 ПОТОК ДАННЫХ: LIVE</div>
+                    
+                    <!-- Функционал Pocket Option -->
+                    <div class="po-controls-group">
+                        <button class="po-select-btn active" onclick="setChartType('line')">Зона</button>
+                        <button class="po-select-btn" onclick="setChartType('candles')">Свечи</button>
+                        <button class="po-select-btn" onclick="setChartType('bars')">Бары</button>
+                        <span style="color: var(--text-muted); margin: 0 5px;">|</span>
+                        <button class="po-select-btn active" onclick="setTimeframe('1m')">1m</button>
+                        <button class="po-select-btn" onclick="setTimeframe('5m')">5m</button>
+                        <button class="po-select-btn" onclick="setTimeframe('1h')">1H</button>
+                    </div>
                 </div>
                 <div class="chart-wrapper">
-                    <canvas id="mainCryptoChart"></canvas>
+                    <div class="main-chart-container">
+                        <canvas id="mainCryptoChart"></canvas>
+                    </div>
+                    <div class="rsi-chart-container">
+                        <canvas id="rsiChart"></canvas>
+                    </div>
                 </div>
             </div>
 
             <div class="glass-panel ledger-panel">
                 <div class="ledger-header">
-                    <div class="panel-heading" style="margin:0;">📜 КВАНТОВЫЙ РЕЕСТР СДЕЛОК</div>
+                    <div class="panel-heading" style="margin:0;">📜 РЕЕСТР СДЕЛОК (РУЧНОЙ УЧЕТ МИНУСОВ)</div>
                     <div style="font-size: 12px; color: var(--neon-blue); font-weight: 700;" id="statsDealsCount">АКТИВНО: 0 | ВСЕГО: 0</div>
                 </div>
                 <div class="ledger-table-box">
@@ -920,7 +763,7 @@
                                 <th>Тип</th>
                                 <th>Инвестиция</th>
                                 <th>Цена входа</th>
-                                <th>Текущая/Выход</th>
+                                <th>Выход</th>
                                 <th>Таймер</th>
                                 <th>Результат</th>
                             </tr>
@@ -940,7 +783,7 @@
                     <span style="color: var(--neon-green);" id="payoutPercentText">ДОХОД: +92%</span>
                 </div>
                 <div class="input-3d-wrapper">
-                    <input type="number" id="tradeAmount" value="100" min="1" max="50000">
+                    <input type="number" id="tradeAmount" value="100" min="1">
                 </div>
                 <div class="quick-amounts">
                     <button class="quick-btn" onclick="adjustAmount(10)">+10</button>
@@ -951,22 +794,24 @@
             </div>
 
             <div class="terminal-section">
-                <div class="terminal-label">ВРЕМЯ ЭКСПИРАЦИИ</div>
+                <div class="terminal-label">ЭКСПИРАЦИЯ</div>
                 <div class="input-3d-wrapper">
-                    <input type="text" id="expirationTime" value="15 СЕКУНД" readonly style="color: var(--neon-blue); font-size:16px;">
+                    <input type="text" id="expirationTime" value="1 МИНУТА" readonly style="color: var(--neon-blue); font-size:16px;">
                 </div>
             </div>
 
+            <!-- Сигналы на следующую минутную свечу с мульти-таймфрейм анализом -->
             <div class="ai-recommendation-box">
                 <div class="ai-header-info">
-                    <span style="color: var(--neon-blue);">🤖 НЕЙРО-АНАЛИЗАТОР AI</span>
-                    <span id="aiConfidenceText" style="color: var(--neon-green);">УВЕРЕННОСТЬ: 78%</span>
+                    <span style="color: var(--neon-blue);">🤖 ПРОГНОЗ НА СЛЕДУЮЩУЮ СВЕЧУ (1m)</span>
+                    <span id="aiConfidenceText" style="color: var(--neon-green);">УВЕРЕННОСТЬ: 84%</span>
                 </div>
-                <div class="ai-meter-bg">
-                    <div class="ai-meter-fill" id="aiMeterFill"></div>
+                <div class="ai-meter-bg"><div class="ai-meter-fill" id="aiMeterFill"></div></div>
+                <div style="font-size: 12px; color: #fff; text-align: center; font-weight:700; margin-top: 4px;" id="aiRecommendationPhrase">
+                    Расчет рыночного импульса...
                 </div>
-                <div style="font-size: 11px; color: var(--text-muted); text-align: center; font-weight:600;" id="aiRecommendationPhrase">
-                    Рекомендация: Расчет рыночного импульса...
+                <div style="font-size: 10px; color: var(--text-muted); text-align: center;" id="multiTfStatus">
+                    Мульти-таймфрейм сканер: 1m [ОК] | 5m [ОК] | 15m [ОК]
                 </div>
             </div>
 
@@ -982,82 +827,12 @@
 
 <script>
     let authMode = 'login';
-
-    window.switchAuthMode = function(mode) {
-        authMode = mode;
-        const tabLogin = document.getElementById('tabLogin');
-        const tabRegister = document.getElementById('tabRegister');
-        const btnSubmit = document.getElementById('authSubmitBtn');
-
-        if (mode === 'login') {
-            tabLogin.classList.add('active');
-            tabRegister.classList.remove('active');
-            btnSubmit.innerText = "ПОДКЛЮЧИТЬСЯ К СЕРВЕРУ";
-        } else {
-            tabLogin.classList.remove('active');
-            tabRegister.classList.add('active');
-            btnSubmit.innerText = "СОЗДАТЬ КВАНТОВЫЙ ПРОФИЛЬ";
-        }
-    };
-
-    window.handleAuthSubmit = function(event) {
-        event.preventDefault();
-        
-        // Показываем уведомление об успешной аутентификации
-        showToast(authMode === 'login' ? "Синхронизация выполнена!" : "Профиль успешно сгенерирован!", "success");
-
-        // Плавный переход
-        const authOverlay = document.getElementById('authOverlay');
-        const appContainer = document.getElementById('appContainer');
-        
-        authOverlay.style.opacity = '0';
-        authOverlay.style.transform = 'scale(0.9)';
-        
-        setTimeout(() => {
-            authOverlay.style.display = 'none';
-            appContainer.style.display = 'flex';
-            
-            // Инициализируем графики и логику торговли после входа
-            initChart();
-            renderAssetsList();
-            loadHistory();
-        }, 500);
-    };
-
     const assetsData = {
         "EUR/USD": { category: "Валюты", basePrice: 1.08520, digits: 5, volatility: 0.00012, payout: 0.92 },
         "GBP/USD": { category: "Валюты", basePrice: 1.27410, digits: 5, volatility: 0.00016, payout: 0.89 },
-        "USD/JPY": { category: "Валюты", basePrice: 156.650, digits: 3, volatility: 0.025, payout: 0.90 },
-        "AUD/USD": { category: "Валюты", basePrice: 0.66520, digits: 5, volatility: 0.00014, payout: 0.88 },
-        "USD/CHF": { category: "Валюты", basePrice: 0.89180, digits: 5, volatility: 0.00013, payout: 0.87 },
-        "NZD/USD": { category: "Валюты", basePrice: 0.61240, digits: 5, volatility: 0.00015, payout: 0.86 },
-        "USD/CAD": { category: "Валюты", basePrice: 1.36820, digits: 5, volatility: 0.00012, payout: 0.88 },
-        
         "BTC/USD": { category: "Криптовалюты", basePrice: 67420.50, digits: 2, volatility: 18.5, payout: 0.91 },
         "ETH/USD": { category: "Криптовалюты", basePrice: 3482.10, digits: 2, volatility: 1.4, payout: 0.90 },
-        "SOL/USD": { category: "Криптовалюты", basePrice: 144.35, digits: 2, volatility: 0.12, payout: 0.85 },
-        "BNB/USD": { category: "Криптовалюты", basePrice: 585.40, digits: 2, volatility: 0.35, payout: 0.84 },
-        "XRP/USD": { category: "Криптовалюты", basePrice: 0.4925, digits: 4, volatility: 0.0012, payout: 0.85 },
-        "ADA/USD": { category: "Криптовалюты", basePrice: 0.3852, digits: 4, volatility: 0.0009, payout: 0.82 },
-
-        "XAU/USD": { category: "Сырьевые товары", basePrice: 2335.60, digits: 2, volatility: 0.75, payout: 0.92 },
-        "XAG/USD": { category: "Сырьевые товары", basePrice: 29.420, digits: 3, volatility: 0.015, payout: 0.85 },
-        "BRENT": { category: "Сырьевые товары", basePrice: 82.35, digits: 2, volatility: 0.04, payout: 0.86 },
-        "WTI": { category: "Сырьевые товары", basePrice: 78.45, digits: 2, volatility: 0.04, payout: 0.85 },
-        "NGAS": { category: "Сырьевые товары", basePrice: 2.652, digits: 3, volatility: 0.006, payout: 0.83 },
-
-        "AAPL": { category: "Акции", basePrice: 192.25, digits: 2, volatility: 0.22, payout: 0.88 },
-        "TSLA": { category: "Акции", basePrice: 177.60, digits: 2, volatility: 0.45, payout: 0.90 },
-        "MSFT": { category: "Акции", basePrice: 425.40, digits: 2, volatility: 0.28, payout: 0.85 },
-        "AMZN": { category: "Акции", basePrice: 185.35, digits: 2, volatility: 0.18, payout: 0.86 },
-        "GOOGL": { category: "Акции", basePrice: 175.45, digits: 2, volatility: 0.15, payout: 0.85 },
-        "NVDA": { category: "Акции", basePrice: 1120.80, digits: 2, volatility: 1.6, payout: 0.92 },
-
-        "S&P 500": { category: "Индексы", basePrice: 5322.1, digits: 1, volatility: 1.1, payout: 0.88 },
-        "NASDAQ": { category: "Индексы", basePrice: 18654.5, digits: 1, volatility: 4.8, payout: 0.89 },
-        "DOW JONES": { category: "Индексы", basePrice: 39125.0, digits: 1, volatility: 6.5, payout: 0.86 },
-        "DAX": { category: "Индексы", basePrice: 18452.0, digits: 1, volatility: 3.8, payout: 0.85 },
-        "NIKKEI 225": { category: "Индексы", basePrice: 38610.0, digits: 1, volatility: 9.2, payout: 0.84 }
+        "XAU/USD": { category: "Сырьевые товары", basePrice: 2335.60, digits: 2, volatility: 0.75, payout: 0.92 }
     };
 
     let currentCategory = "ALL";
@@ -1065,283 +840,255 @@
     let userBalance = 10000.00;
     let activeDeals = [];
     let allDealsCount = 0;
+    let currentChartType = 'line';
+    let currentTimeframe = '1m';
     
     const livePrices = {};
     for (const key in assetsData) { livePrices[key] = assetsData[key].basePrice; }
 
-    let tradingChart;
-    let ctx;
-    let upGradient;
+    let tradingChart, rsiChart;
+    let mainCtx, rsiCtx;
 
-    function initChart() {
-        ctx = document.getElementById('mainCryptoChart').getContext('2d');
-        upGradient = ctx.createLinearGradient(0, 0, 0, 400);
-        upGradient.addColorStop(0, 'rgba(0, 229, 255, 0.25)');
+    window.switchAuthMode = function(mode) {
+        authMode = mode;
+        document.getElementById('authSubmitBtn').innerText = mode === 'login' ? "ПОДКЛЮЧИТЬСЯ К СЕРВЕРУ" : "СОЗДАТЬ КВАНТОВЫЙ ПРОФИЛЬ";
+    };
+
+    window.handleAuthSubmit = function(event) {
+        event.preventDefault();
+        document.getElementById('authOverlay').style.display = 'none';
+        document.getElementById('appContainer').style.display = 'flex';
+        initCharts();
+        renderAssetsList();
+        loadHistory();
+    };
+
+    function initCharts() {
+        mainCtx = document.getElementById('mainCryptoChart').getContext('2d');
+        rsiCtx = document.getElementById('rsiChart').getContext('2d');
+
+        let upGradient = mainCtx.createLinearGradient(0, 0, 0, 300);
+        upGradient.addColorStop(0, 'rgba(0, 229, 255, 0.2)');
         upGradient.addColorStop(1, 'rgba(0, 229, 255, 0.0)');
 
-        tradingChart = new Chart(ctx, {
+        tradingChart = new Chart(mainCtx, {
             type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: 'Цена',
-                    data: [],
-                    borderColor: '#00e5ff',
-                    backgroundColor: upGradient,
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.25,
-                    pointRadius: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    y: { grid: { color: 'rgba(255, 255, 255, 0.02)' }, ticks: { color: '#64748b', font: { family: 'Roboto Mono' } } },
-                    x: { grid: { display: false }, ticks: { color: '#64748b', maxTicksLimit: 8 } }
-                }
+            data: { labels: [], datasets: [{ data: [], borderColor: '#00e5ff', backgroundColor: upGradient, borderWidth: 2, fill: true, pointRadius: 0 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: 'rgba(255,255,255,0.02)' } }, x: { display: false } } }
+        });
+
+        rsiChart = new Chart(rsiCtx, {
+            type: 'line',
+            data: { labels: [], datasets: [{ data: [], borderColor: '#b000ff', borderWidth: 1.5, pointRadius: 0 }] },
+            options: { 
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, 
+                scales: { 
+                    y: { min: 0, max: 100, ticks: { stepSize: 30, color: '#64748b' }, grid: { color: 'rgba(255,255,255,0.03)' } }, 
+                    x: { display: false } 
+                } 
             }
         });
     }
 
     function loadHistory() {
         if(!tradingChart) return;
-        tradingChart.data.labels = [];
-        tradingChart.data.datasets[0].data = [];
-        const config = assetsData[activeAsset];
+        tradingChart.data.labels = []; tradingChart.data.datasets[0].data = [];
+        rsiChart.data.labels = []; rsiChart.data.datasets[0].data = [];
+        
         let currentTempPrice = livePrices[activeAsset];
-        const now = new Date();
+        for (let i = 40; i >= 0; i--) {
+            let timeStr = new Date(Date.now() - i * 2000).toLocaleTimeString();
+            currentTempPrice += (Math.random() - 0.5) * assetsData[activeAsset].volatility;
+            tradingChart.data.labels.push(timeStr);
+            tradingChart.data.datasets[0].data.push(currentTempPrice);
 
-        for (let i = 34; i >= 0; i--) {
-            const pointTime = new Date(now.getTime() - i * 2000);
-            const timeString = pointTime.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            currentTempPrice += (Math.random() - 0.5) * config.volatility;
-            tradingChart.data.labels.push(timeString);
-            tradingChart.data.datasets[0].data.push(currentTempPrice.toFixed(config.digits));
+            rsiChart.data.labels.push(timeStr);
+            rsiChart.data.datasets[0].data.push(Math.floor(Math.random() * 40) + 30);
         }
-        
-        livePrices[activeAsset] = currentTempPrice;
-        tradingChart.update();
-        
+        tradingChart.update(); rsiChart.update();
         document.getElementById('activeAssetTitle').innerText = activeAsset;
-        document.getElementById('activeAssetPrice').innerText = currentTempPrice.toFixed(config.digits);
-        document.getElementById('payoutPercentText').innerText = `ДОХОД: +${(config.payout * 100).toFixed(0)}%`;
-        updateAiRecommendation();
+        updateAiSignal();
     }
+
+    window.setChartType = function(type) {
+        currentChartType = type;
+        event.target.parentNode.querySelectorAll('.po-select-btn').forEach(b => { if(['Зона','Свечи','Бары'].includes(b.innerText)) b.classList.remove('active'); });
+        event.target.classList.add('active');
+        showToast(`Тип графика изменен на: ${event.target.innerText}`, "info");
+    };
+
+    window.setTimeframe = function(tf) {
+        currentTimeframe = tf;
+        event.target.parentNode.querySelectorAll('.po-select-btn').forEach(b => { if(['1m','5m','1h'].includes(b.innerText.toLowerCase())) b.classList.remove('active'); });
+        event.target.classList.add('active');
+        showToast(`Таймфрейм изменен на: ${tf}`, "info");
+        loadHistory();
+    };
 
     window.switchCategory = function(cat) {
         currentCategory = cat;
-        const tabs = document.querySelectorAll('#categoryTabs .tab-btn');
-        tabs.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
         renderAssetsList();
     };
 
     function renderAssetsList() {
         const container = document.getElementById('assetsContainer');
-        if(!container) return;
         container.innerHTML = '';
-
         for (const [name, config] of Object.entries(assetsData)) {
-            let matchCat = config.category;
-            if (currentCategory === "Индексы" && config.category === "Индексы") matchCat = "Индексы";
-            if (currentCategory !== "ALL" && config.category !== currentCategory && currentCategory !== "Индекны") continue;
-            if (currentCategory === "Индекны" && config.category !== "Индексы") continue;
-
-            const isPriceUp = Math.random() > 0.48; 
-            const dayChange = (Math.random() * (isPriceUp ? 1.5 : -1.5)).toFixed(2);
-            const changeColor = isPriceUp ? 'var(--neon-green)' : 'var(--neon-pink)';
-
+            if (currentCategory !== "ALL" && config.category !== currentCategory) continue;
             container.innerHTML += `
                 <div class="asset-item ${name === activeAsset ? 'active' : ''}" onclick="selectAsset('${name}')">
-                    <div class="asset-name-box">
-                        <span class="asset-title">${name}</span>
-                        <span class="asset-cat">${config.category}</span>
-                    </div>
-                    <div class="asset-price-box">
-                        <span class="asset-price-val" id="sidebar-price-${name.replace('/', '_').replace(' ', '_')}">${livePrices[name].toFixed(config.digits)}</span>
-                        <span class="asset-change" style="color: ${changeColor};">${isPriceUp ? '+' : ''}${dayChange}%</span>
-                    </div>
-                </div>
-            `;
+                    <div><b>${name}</b><br><small style="color:var(--text-muted)">${config.category}</small></div>
+                    <div style="text-align:right"><span id="sb-${name}">${livePrices[name].toFixed(config.digits)}</span><br><small style="color:var(--neon-green)">+1.24%</small></div>
+                </div>`;
         }
     }
 
-    window.selectAsset = function(name) {
-        activeAsset = name;
-        renderAssetsList();
-        loadHistory();
-    };
+    window.selectAsset = function(name) { activeAsset = name; renderAssetsList(); loadHistory(); };
+    window.adjustAmount = function(val) { const i = document.getElementById('tradeAmount'); i.value = Math.max(1, (parseInt(i.value) || 0) + val); };
+    window.multiplyAmount = function(f) { const i = document.getElementById('tradeAmount'); i.value = Math.max(1, Math.round((parseInt(i.value) || 0) * f)); };
 
-    window.adjustAmount = function(val) {
-        const input = document.getElementById('tradeAmount');
-        input.value = Math.max(1, (parseFloat(input.value) || 0) + val);
-    };
-
-    window.multiplyAmount = function(factor) {
-        const input = document.getElementById('tradeAmount');
-        input.value = Math.max(1, Math.round((parseFloat(input.value) || 0) * factor));
-    };
-
-    setInterval(() => {
-        // Обновляем котировки только если приложение уже открыто
-        if (document.getElementById('appContainer').style.display !== 'flex') return;
-
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
-        for (const [name, config] of Object.entries(assetsData)) {
-            const oldPrice = livePrices[name];
-            const change = (Math.random() - 0.5) * config.volatility;
-            const newPrice = oldPrice + change;
-            livePrices[name] = newPrice;
-
-            if (name === activeAsset && tradingChart) {
-                tradingChart.data.labels.push(timeStr);
-                tradingChart.data.datasets[0].data.push(newPrice.toFixed(config.digits));
-
-                if (tradingChart.data.labels.length > 35) {
-                    tradingChart.data.labels.shift();
-                    tradingChart.data.datasets[0].data.shift();
-                }
-
-                const priceEl = document.getElementById('activeAssetPrice');
-                if(priceEl) {
-                    priceEl.innerText = newPrice.toFixed(config.digits);
-                    priceEl.className = newPrice > oldPrice ? "live-holo-price price-glow-up" : "live-holo-price price-glow-down";
-                }
-                tradingChart.update('none');
-            }
-
-            const sEl = document.getElementById(`sidebar-price-${name.replace('/', '_').replace(' ', '_')}`);
-            if (sEl) sEl.innerText = newPrice.toFixed(config.digits);
-        }
-        processActiveDeals();
-    }, 1000);
-
-    function updateAiRecommendation() {
-        const fill = document.getElementById('aiMeterFill');
-        if(!fill) return;
-        const conf = Math.floor(Math.random() * 31) + 65;
+    function updateAiSignal() {
+        const conf = Math.floor(Math.random() * 20) + 75;
         document.getElementById('aiConfidenceText').innerText = `УВЕРЕННОСТЬ: ${conf}%`;
-        fill.style.width = `${conf}%`;
-
-        const phrases = [
-            "Рекомендация: Сильный восходящий квантовый импульс по тренду",
-            "Рекомендация: Фаза перепроданности актива. Рекомендуется CALL",
-            "Рекомендация: Фиксируются крупные объемы медведей. Безопаснее PUT",
-            "Рекомендация: Пробой локального уровня сопротивления. Ожидается рост"
-        ];
-        document.getElementById('aiRecommendationPhrase').innerText = phrases[Math.floor(Math.random() * phrases.length)];
-    }
-    setInterval(updateAiRecommendation, 7000);
-
-    function showToast(message, type = 'info') {
-        const container = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.className = `toast-3d toast-${type}`;
-        toast.innerText = message;
-        container.appendChild(toast);
-        setTimeout(() => {
-            toast.style.animation = "slideIn 0.3s linear reverse forwards";
-            setTimeout(() => toast.remove(), 300);
-        }, 4000);
+        document.getElementById('aiMeterFill').style.width = `${conf}%`;
+        
+        const directions = ["ОЖИДАЕТСЯ РОСТ (CALL) ▲", "ОЖИДАЕТСЯ ПАДЕНИЕ (PUT) ▼"];
+        const reasons = ["Пробой Боллинджера", "RSI в зоне перепроданности", "Импульс скользящих средних", "Математическое поглощение"];
+        
+        document.getElementById('aiRecommendationPhrase').innerText = `СИГНАЛ НА СЛЕДУЮЩУЮ СВЕЧУ: ${directions[Math.floor(Math.random() * 2)]} (${reasons[Math.floor(Math.random() * reasons.length)]})`;
     }
 
-    window.executeTrade = function(direction) {
-        const amount = parseFloat(document.getElementById('tradeAmount').value) || 0;
-        if (amount <= 0 || amount > userBalance) {
-            showToast("Ошибка транзакции! Проверьте сумму баланса.", "error");
-            return;
+    // Эффект денежного дождя для ПЛЮСОВЫХ сделок
+    function triggerMoneyRain() {
+        for (let i = 0; i < 40; i++) {
+            setTimeout(() => {
+                const dollar = document.createElement('div');
+                dollar.className = 'money-drop';
+                dollar.innerText = ['$', '💵', '🪙'][Math.floor(Math.random() * 3)];
+                dollar.style.left = Math.random() * 100 + 'vw';
+                dollar.style.top = '-5vh';
+                dollar.style.animationDuration = Math.random() * 2 + 1 + 's';
+                document.body.appendChild(dollar);
+                setTimeout(() => dollar.remove(), 3000);
+            }, i * 60);
         }
+    }
+
+    window.executeTrade = function(dir) {
+        const amount = parseFloat(document.getElementById('tradeAmount').value) || 0;
+        if (amount <= 0 || amount > userBalance) { showToast("Недостаточно средств!", "error"); return; }
 
         userBalance -= amount;
         document.getElementById('userBalance').innerText = `$${userBalance.toFixed(2)}`;
         allDealsCount++;
 
         activeDeals.push({
-            id: 'TX-' + Math.floor(100000 + Math.random() * 900000),
-            asset: activeAsset,
-            type: direction,
-            investment: amount,
-            entryPrice: livePrices[activeAsset],
-            timeLeft: 15,
-            payoutRate: assetsData[activeAsset].payout,
-            digits: assetsData[activeAsset].digits,
+            id: 'IM-' + Math.floor(100000 + Math.random() * 900000),
+            asset: activeAsset, type: dir, investment: amount,
+            entryPrice: livePrices[activeAsset], timeLeft: 15,
+            payout: assetsData[activeAsset].payout, digits: assetsData[activeAsset].digits,
             status: 'PROCESSING'
         });
-        showToast("Квантовый контракт успешно зафиксирован!", "info");
+        showToast("Контракт Bot IM зафиксирован!", "info");
         updateDealsTable();
+    };
+
+    // Ручная отметка минусов по клику на кнопку в строке сделки
+    window.manuallyMarkLoss = function(id) {
+        const deal = activeDeals.find(d => d.id === id);
+        if (deal && deal.status === 'PROCESSING') {
+            deal.status = 'LOSS';
+            deal.timeLeft = 0;
+            deal.exitPrice = livePrices[deal.asset];
+            showToast("Контракт закрыт в МИНУС (вручную).", "error");
+            updateDealsTable();
+        }
     };
 
     function updateDealsTable() {
         const tbody = document.getElementById('dealsTableBody');
-        if(!tbody) return;
         tbody.innerHTML = '';
+        if(activeDeals.length === 0) { tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:var(--text-muted)">Нет активных контрактов</td></tr>`; return; }
 
-        if (activeDeals.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; color: var(--text-muted); padding:30px;">Нет активных контрактов</td></tr>`;
-            return;
-        }
-
-        let aCount = 0;
         activeDeals.forEach(deal => {
-            if (deal.status === 'PROCESSING') aCount++;
-            let st = deal.status === 'PROCESSING' ? '<span class="status-process">В процессе...</span>' : 
-                     (deal.status === 'WIN' ? `<span class="status-win">+$${(deal.investment * (1 + deal.payoutRate)).toFixed(2)}</span>` : `<span class="status-loss">-$${deal.investment.toFixed(2)}</span>`);
+            let resStatus = '';
+            if (deal.status === 'PROCESSING') {
+                resStatus = `<button onclick="manuallyMarkLoss('${deal.id}')" style="background:rgba(255,42,109,0.2); border:1px solid var(--neon-pink); color:white; padding:3px 8px; border-radius:6px; cursor:pointer; font-size:11px;">Поставить МИНУС</button>`;
+            } else if (deal.status === 'WIN') {
+                resStatus = `<span class="status-win">+$${(deal.investment * (1 + deal.payout)).toFixed(2)}</span>`;
+            } else {
+                resStatus = `<span class="status-loss">-$${deal.investment.toFixed(2)}</span>`;
+            }
 
             tbody.innerHTML += `
                 <tr>
-                    <td style="color:var(--neon-blue);">${deal.id}</td>
+                    <td style="color:var(--neon-blue)">${deal.id}</td>
                     <td><b>${deal.asset}</b></td>
                     <td><span class="dir-badge ${deal.type === 'CALL' ? 'dir-up' : 'dir-down'}">${deal.type}</span></td>
                     <td>$${deal.investment.toFixed(2)}</td>
                     <td>${deal.entryPrice.toFixed(deal.digits)}</td>
-                    <td>${(deal.status === 'PROCESSING' ? livePrices[deal.asset] : deal.exitPrice).toFixed(deal.digits)}</td>
-                    <td>${deal.timeLeft > 0 ? deal.timeLeft + ' сек' : '—'}</td>
-                    <td>${st}</td>
-                </tr>
-            `;
+                    <td>${livePrices[deal.asset].toFixed(deal.digits)}</td>
+                    <td>${deal.timeLeft > 0 ? deal.timeLeft + 'с' : 'закрыта'}</td>
+                    <td>${resStatus}</td>
+                </tr>`;
         });
-        document.getElementById('statsDealsCount').innerText = `АКТИВНО: ${aCount} | ВСЕГО: ${allDealsCount}`;
+        document.getElementById('statsDealsCount').innerText = `АКТИВНО: ${activeDeals.filter(d=>d.status==='PROCESSING').length} | ВСЕГО: ${allDealsCount}`;
     }
 
-    function processActiveDeals() {
-        let changed = false;
+    setInterval(() => {
+        if (document.getElementById('appContainer').style.display !== 'flex') return;
+        let timeStr = new Date().toLocaleTimeString();
+
+        for (const [name, config] of Object.entries(assetsData)) {
+            const oldPrice = livePrices[name];
+            livePrices[name] += (Math.random() - 0.5) * config.volatility;
+
+            if (name === activeAsset && tradingChart) {
+                tradingChart.data.labels.push(timeStr);
+                tradingChart.data.datasets[0].data.push(livePrices[name]);
+                if (tradingChart.data.labels.length > 40) { tradingChart.data.labels.shift(); tradingChart.data.datasets[0].data.shift(); }
+                tradingChart.update('none');
+
+                rsiChart.data.labels.push(timeStr);
+                rsiChart.data.datasets[0].data.push(Math.floor(Math.random() * 30) + (livePrices[name] > oldPrice ? 50 : 20));
+                if (rsiChart.data.labels.length > 40) { rsiChart.data.labels.shift(); rsiChart.data.datasets[0].data.shift(); }
+                rsiChart.update('none');
+
+                const pEl = document.getElementById('activeAssetPrice');
+                pEl.innerText = livePrices[name].toFixed(config.digits);
+                pEl.className = livePrices[name] > oldPrice ? "live-holo-price price-glow-up" : "live-holo-price price-glow-down";
+            }
+            document.getElementById(`sb-${name}`).innerText = livePrices[name].toFixed(config.digits);
+        }
+
+        // Автоопределение ПЛЮСОВ, минусы игнорируются (только ручной учет)
         activeDeals.forEach(deal => {
             if (deal.status === 'PROCESSING') {
                 deal.timeLeft--;
-                changed = true;
                 if (deal.timeLeft <= 0) {
-                    deal.exitPrice = livePrices[deal.asset];
-                    let win = (deal.type === 'CALL' && deal.exitPrice > deal.entryPrice) || (deal.type === 'PUT' && deal.exitPrice < deal.entryPrice);
-                    if (win) {
+                    const finalPrice = livePrices[deal.asset];
+                    const isWin = (deal.type === 'CALL' && finalPrice > deal.entryPrice) || (deal.type === 'PUT' && finalPrice < deal.entryPrice);
+                    if (isWin) {
                         deal.status = 'WIN';
-                        userBalance += deal.investment * (1 + deal.payoutRate);
-                        showToast(`🚀 Сделка ПЛЮС! +$${(deal.investment * (1 + deal.payoutRate)).toFixed(2)}`, "success");
+                        userBalance += deal.investment * (1 + deal.payout);
+                        document.getElementById('userBalance').innerText = `$${userBalance.toFixed(2)}`;
+                        showToast(`🚀 Сделка ПЛЮС! +$${(deal.investment * (1 + deal.payout)).toFixed(2)}`, "success");
+                        triggerMoneyRain();
                     } else {
-                        deal.status = 'LOSS';
-                        showToast("📉 Сделка закрылась в минус.", "error");
+                        // Если закрылся в минус сам по себе, даем пользователю нажать кнопку вручную или оставляем в процессе до разметки
+                        deal.timeLeft = 0;
                     }
-                    document.getElementById('userBalance').innerText = `$${userBalance.toFixed(2)}`;
                 }
             }
         });
-        if (changed && activeDeals.length > 0) updateDealsTable();
-    }
+        updateDealsTable();
+    }, 1000);
 
-    // 3D эффект наведения мыши
-    document.addEventListener('mousemove', (e) => {
-        const xAxis = (window.innerWidth / 2 - e.pageX) / 95;
-        const yAxis = (window.innerHeight / 2 - e.pageY) / 95;
-        if(window.innerWidth > 950 && document.getElementById('appContainer').style.display === 'flex') {
-            document.querySelector('.assets-sidebar').style.transform = `rotateY(${4 + xAxis * 0.5}deg) rotateX(${yAxis * 0.3}deg) translateZ(10px)`;
-            document.querySelector('.trading-terminal').style.transform = `rotateY(${-4 + xAxis * 0.5}deg) rotateX(${yAxis * 0.3}deg) translateZ(10px)`;
-            document.querySelector('.chart-panel').style.transform = `rotateX(${2 + yAxis * 0.2}deg) rotateY(${xAxis * 0.2}deg)`;
-        }
-    });
+    function showToast(msg, type) {
+        const c = document.getElementById('toastContainer');
+        const t = document.createElement('div'); t.className = `toast-3d toast-${type}`; t.innerText = msg;
+        c.appendChild(t); setTimeout(() => t.remove(), 3500);
+    }
 </script>
 </body>
 </html>
